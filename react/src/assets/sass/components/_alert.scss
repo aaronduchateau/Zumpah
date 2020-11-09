@@ -1,0 +1,35 @@
+@import '../variables';
+
+$_shape: 7px;
+
+.ant-alert {
+  border-radius: $_shape;
+  border-width: 0;
+  width: 100%;
+
+  &.ant-alert-no-icon {
+    padding: ($module-rem * 1.5) ($module-rem * 2);
+  }
+  &.ant-alert-success {
+    background: rgba($success-color, .35);
+    border-color: $success-color;
+  }
+  &.ant-alert-info {
+    background: rgba($info-color, .35);
+    border-color: $info-color;
+  }
+  &.ant-alert-warning {
+    background: rgba($warning-color, .35);
+    border-color: $warning-color;
+  }
+  &.ant-alert-error {
+    background: rgba($error-color, .35);
+    border-color: $error-color;
+  }
+
+  .ant-alert-close-icon {
+    top: 50%;
+    font-size: 16px;
+    transform: translateY(-50%);
+  }
+}

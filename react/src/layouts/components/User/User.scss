@@ -1,0 +1,40 @@
+@import '../../../assets/sass/variables';
+
+.user-bg {
+  height: 180px;
+  border-radius: $shape $shape 0 0;
+  background-size: cover;
+  background-position: 0 50%;
+}
+
+.user-info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -58px;
+  margin-bottom: $module-rem * 2;
+
+  .user-img {
+    box-shadow: $shadow;
+    border-radius: 50%;
+    font-size: 32px;
+
+    .ant-avatar {
+      margin: 0;
+    }
+  }
+  .user-name {
+    margin-bottom: 0;
+  }
+  .user-role {
+    opacity: 0.5;
+  }
+  .user-link {
+    color: $main-color;
+
+    &:hover {
+      color: $link-color;
+    }
+  }
+}

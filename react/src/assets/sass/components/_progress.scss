@@ -1,0 +1,101 @@
+@import '../variables';
+
+$_height: 8px;
+$_inner-height: 2px;
+
+$_height-sm: 5px;
+$_inner-height-sm: 1px;
+
+$_types: (
+  normal: main-palette(500),
+  active: $info-color,
+  info: $info-color,
+  success: $success-color,
+  exception: $error-color,
+  disabled: rgba(#ccc, 0.1)
+);
+
+.ant-progress {
+  &:not(.ant-progress-circle) {
+    .ant-progress-inner {
+      align-items: center;
+      height: $_height;
+      display: flex;
+
+      .ant-progress-bg {
+        border-radius: 500px;
+        height: $_inner-height !important;
+        position: relative;
+        margin: 0 4px;
+
+        &:after {
+          content: '';
+          position: absolute;
+          right: 0;
+          display: block;
+          height: 8px;
+          top: 50%;
+          transform: translate(50%, -50%);
+          width: 8px;
+          border-radius: 50%;
+          border: 1px solid #fff;
+          z-index: 99;
+        }
+      }
+    }
+    &.ant-progress-small {
+      height: $_height-sm !important;
+
+      .ant-progress-bg {
+        height: $_inner-height-sm !important;
+        margin: 0 3px;
+      }
+    }
+    @each $_type, $_color in $_types {
+      &.ant-progress-status-#{$_type} {
+        .ant-progress-inner {
+          background-color: rgba($_color, 0.12);
+          overflow: visible;
+
+          .ant-progress-bg {
+            background-color: $_color;
+
+            &:after {
+              background-color: $_color;
+              box-shadow: 0 0 0 4px rgba($_color, 0.12);
+            }
+          }
+        }
+      }
+    }
+  }
+  &.ant-progress-circle {
+    .ant-progress-text {
+      align-items: center;
+      border: 1px solid rgba(main-palette(500), .2);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      height: 80%;
+      width: 80%;
+    }
+    .ant-progress-circle-trail,
+    .ant-progress-circle-path {
+      stroke-width: 2px !important;
+    }
+    @each $_type, $_color in $_types {
+      &.ant-progress-status-#{$_type} {
+        .ant-progress-circle-trail {
+          stroke: transparent !important;
+        }
+        .ant-progress-inner {
+          &:not(.ant-progress-circle-gradient) {
+            .ant-progress-circle-path {
+              stroke: $_color !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "title": "UX World",
+    "bgImage": "/content/bg-card-3.jpg",
+    "bg": "#fc8b37",
+    "members": 4709,
+    "joined": false,
+    "connections": [
+      "/content/user-40-1.jpg",
+      "/content/user-40-2.jpg",
+      "/content/user-40-3.jpg",
+      "/content/user-40-4.jpg"
+    ]
+  },
+  {
+    "title": "Android Devs",
+    "bgImage": "/content/bg-card-1.jpg",
+    "members": 3206,
+    "joined": false,
+    "connections": ["/content/user-40-1.jpg", "/content/user-40-5.jpg"]
+  },
+  {
+    "title": "FrontEnd Ninjas",
+    "bg": "#2fa7ff",
+    "avatar": "/content/group-avatar-76-3.jpg",
+    "bgImage": "/content/bg-card-4.jpg",
+    "members": 5809,
+    "joined": false,
+    "connections": ["/content/user-40-3.jpg", "/content/user-40-4.jpg"]
+  },
+  {
+    "title": "Full Stack Devs",
+    "bgImage": "/content/user-profile.jpg",
+    "members": 4309,
+    "bg": "#805aff",
+    "joined": false,
+    "connections": [
+      "/content/user-40-1.jpg",
+      "/content/user-40-2.jpg",
+      "/content/user-40-3.jpg",
+      "/content/user-40-4.jpg"
+    ]
+  },
+  {
+    "title": "Angular In Depth",
+    "avatar": "/content/group-avatar-76-1.jpg",
+    "bgImage": "/content/bg-card-5.jpg",
+    "members": 6391,
+    "joined": false,
+    "connections": ["/content/user-40-1.jpg", "/content/user-40-2.jpg"]
+  },
+  {
+    "title": "Human Resources",
+    "avatar": "/content/group-avatar-76-2.jpg",
+    "bgImage": "/content/bg-card-2.jpg",
+    "members": 4325,
+    "joined": false,
+    "bg": "#7cdb86",
+    "connections": [
+      "/content/user-40-1.jpg",
+      "/content/user-40-2.jpg",
+      "/content/user-40-3.jpg",
+      "/content/user-40-4.jpg"
+    ]
+  }
+]

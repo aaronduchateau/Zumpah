@@ -1,0 +1,20 @@
+@import '../variables';
+
+.ant-tag {
+  align-items: center;
+  color: $main-color;
+  padding: calc(#{$module-rem} / 2 - 1px) calc(#{$module-rem} * 2 - 1px);
+
+  .anticon-close {
+    color: rgba($main-color, .5);
+    font-size: 14px;
+
+    &:hover {
+      color: $main-color;
+    }
+  }
+}
+
+:root html .ant-tag .anticon-close {
+  font-size: 14px;
+}

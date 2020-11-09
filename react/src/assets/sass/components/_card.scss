@@ -1,0 +1,82 @@
+@import '../variables';
+
+$_shape: $shape;
+$_shadow: 7px 7px 20px 0 rgba(0, 0, 0, 0.08);
+
+$_title-color: #4a505c;
+$_title-fs: 1.2rem;
+$_title-fw: bold;
+
+$_h-padding: $module-rem * 3;
+$_v-padding: $module-rem * 2;
+
+.ant-card {
+  border-radius: $_shape;
+  box-shadow: $_shadow;
+  border: none;
+  margin-bottom: $module-rem * 2;
+
+  .ant-card-head {
+    margin: 0;
+    padding: 0 ($_h-padding) 0;
+    font-size: $main-fs;
+
+    .ant-card-head-title {
+      color: $_title-color;
+      font-size: $_title-fs;
+      font-weight: $_title-fw;
+      letter-spacing: 0.2px;
+      padding-bottom: 0;
+      margin: 0;
+    }
+  }
+  .ant-card-body {
+    padding: ($_v-padding) ($_h-padding);
+    letter-spacing: 0.4px;
+  }
+  .ant-card-cover {
+    border-radius: $_shape $_shape 0 0;
+    overflow: hidden;
+  }
+  .ant-card-actions {
+    border-radius: 0 0 $_shape $_shape;
+    overflow: hidden;
+  }
+  .ant-card-meta {
+    &:not(:last-child) {
+      margin-bottom: $module-rem / 2;
+    }
+  }
+
+  &.component-demo-card {
+    border-radius: $shape $shape 0 0;
+    margin-bottom: 0;
+    box-shadow: 6px 6px 20px 0 rgba(#000, 0.08);
+  }
+  &.ghost-demo-card {
+    background: #bec8c8;
+
+    .ant-card-head {
+      color: #fff;
+    }
+  }
+  &.code-demo-card {
+    background: #f3f3f3;
+    border-radius: 0 0 $shape $shape;
+    margin-top: 0;
+    box-shadow: 6px 12px 10px 0 rgba(#000, 0.08);
+
+    .ant.card-body {
+      padding: 0;
+    }
+  }
+  &:not(.ant-card-contain-tabs) {
+    .ant-card-head {
+      border: none;
+    }
+  }
+
+  pre {
+    background: transparent !important;
+  }
+}

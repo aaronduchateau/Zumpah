@@ -1,0 +1,44 @@
+@import '../variables';
+
+$_radio-color: #7cdb86;
+
+.ant-radio-wrapper {
+  .ant-radio {
+    &:hover:not(.ant-radio-disabled) {
+      .ant-radio-inner {
+        border-color: rgba(74, 80, 92, 0.1);
+
+        &:after {
+          background: $_radio-color;
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+    }
+    .ant-radio-inner {
+      background-clip: padding-box;
+      border-color: rgba(74, 80, 92, 0.1);
+      box-shadow: none;
+      height: 20px;
+      width: 20px;
+
+      &:after {
+        background: $_radio-color;
+        height: 10px;
+        left: 4px;
+        top: 4px;
+        width: 10px;
+      }
+    }
+    &.ant-radio-checked {
+      .ant-radio-inner {
+        border-color: rgba($_radio-color, 0.2);
+        background-color: rgba($_radio-color, 0.2);
+      }
+
+      &:after {
+        border-color: $_radio-color;
+      }
+    }
+  }
+}

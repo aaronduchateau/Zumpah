@@ -1,0 +1,25 @@
+@import '../../../assets/sass/variables';
+
+$_item-shadow: 1px 2px 4px 0 rgba(#000, 0.08);
+$_shape: $shape;
+
+.tc-list {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  .tc-list-item {
+    align-items: center;
+    background-color: #fff;
+    box-shadow: $_item-shadow;
+    border-radius: $_shape;
+    display: flex;
+    min-height: 50px;
+    padding: ($module-rem) ($module-rem * 3);
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: $module-rem;
+    }
+  }
+}

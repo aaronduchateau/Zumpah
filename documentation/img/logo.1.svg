@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="27px" height="27px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="99.6636927%" y1="4.20417214%" x2="4.20417214%" y2="100.336307%" id="linearGradient-1">
+            <stop stop-color="#CD5447" offset="0%"></stop>
+            <stop stop-color="#B3589C" offset="64.8572977%"></stop>
+            <stop stop-color="#9D5CE5" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#F5515F" offset="0%"></stop>
+            <stop stop-color="#9F041B" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#FAD961" offset="0%"></stop>
+            <stop stop-color="#F76B1C" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="elements" transform="translate(-29.000000, -16.000000)">
+            <g id="header" transform="translate(-9.000000, 0.000000)">
+                <g id="logo" transform="translate(36.000000, 14.000000)">
+                    <g id="Rectangle-14">
+                        <rect fill="url(#linearGradient-1)" transform="translate(12.000000, 15.500000) rotate(30.000000) translate(-12.000000, -15.500000) " x="6" y="2" width="12" height="27" rx="6"></rect>
+                        <rect fill="url(#linearGradient-2)" transform="translate(28.787981, 14.965304) rotate(30.000000) translate(-28.787981, -14.965304) " x="22.7879809" y="1.14896103" width="12" height="27.6326859" rx="6"></rect>
+                        <path d="M20.2427858,1.11186028 L20.2427858,1.11186028 C23.5564943,1.11186028 26.2427858,3.79815178 26.2427858,7.11186028 L26.2427858,23.2983938 C26.2427858,26.6121023 23.5564943,29.2983938 20.2427858,29.2983938 L20.2427858,29.2983938 C16.9290773,29.2983938 14.2427858,26.6121023 14.2427858,23.2983938 L14.2427858,7.11186028 C14.2427858,3.79815178 16.9290773,1.11186028 20.2427858,1.11186028 Z" fill="url(#linearGradient-3)" transform="translate(20.242786, 15.205127) rotate(-30.000000) translate(-20.242786, -15.205127) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
