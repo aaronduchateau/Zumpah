@@ -1,0 +1,17 @@
+@import '../variables';
+
+.ant-form-item {
+  margin-bottom: $module-rem * 2;
+}
+
+.ant-form-explain,
+.ant-form-split {
+  position: absolute;
+
+  .error-message {
+    font-size: .9rem;
+    margin-left: 12px;
+  }
+}
+
+

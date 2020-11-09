@@ -1,0 +1,16 @@
+// Importing main app variables
+@import 'variables';
+
+@import './fonts';
+
+@import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import './full-calendar';
+@import './structure';
+@import './typography';
+@import './helpers';
+
+@import './components/components';
+
+@import '../css/icofont.min';
+@import './simple-line-icons';

@@ -1,0 +1,44 @@
+@import "../variables";
+
+.ant-switch {
+  height: 20px;
+  background: #fff;
+  border: 1px solid rgba(74,80,92,.1);
+
+  &:hover:not(.ant-switch-disabled) {
+    &:after {
+      background: $success-color;
+    }
+  }
+  &:after {
+    background: #d8d8d8;
+    top: 2px;
+    left: 2px;
+    height: 14px;
+    width: 14px;
+  }
+  &.ant-switch-checked {
+    background: rgba($success-color, .2);
+    background-clip: padding-box;
+    border-color: rgba($success-color, .2);
+
+    &:after {
+      background: $success-color;
+      left: calc(100% - 2px);
+      right: 2px;
+    }
+
+    &.ant-switch-disabled {
+      background: rgba(#000, .08);
+      border-color: rgba(#000, .08);
+
+      &:after {
+        background: #8c8c8c;
+      }
+    }
+  }
+}
+
+.ant-click-animating-node {
+  border-color: rgba($success-color, .1) !important;
+}

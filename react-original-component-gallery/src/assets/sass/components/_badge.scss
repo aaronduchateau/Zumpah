@@ -1,0 +1,10 @@
+@import '../variables';
+
+$_badge-bg: #805AFF;
+
+.ant-badge {
+  .ant-badge-count,
+  .ant-badge-dot {
+    background: $_badge-bg;
+  }
+}

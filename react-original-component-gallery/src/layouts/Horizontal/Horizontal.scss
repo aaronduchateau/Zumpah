@@ -1,0 +1,32 @@
+@import '../../assets/sass/variables';
+
+.horizontal {
+  .app-container {
+
+    .navbar.horizontal {
+      > * {
+        margin: 0 $module-rem;
+      }
+      .navbar-skeleton {
+        .sk-logo {
+          display: none !important;
+        }
+      }
+    }
+    .horizontal-navbar {
+      box-shadow: 0 0 10px 0 rgba(#000, 0.15);
+
+      .logo {
+        padding-left: 09;
+      }
+    }
+    .top-bar {
+      z-index: 998;
+    }
+    .menu-bar {
+      background: linear-gradient(188deg, rgb(205, 84, 71), rgb(157, 92, 229) 65%);
+      color: rgb(255, 255, 255);
+      min-height: 50px;
+    }
+  }
+}

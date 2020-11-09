@@ -1,0 +1,32 @@
+@import '../variables';
+
+$_slider-color: rgb(236, 36, 39);
+
+//.ant-slider {
+//  .ant-slider-dot-active {
+//    border-color: rgba($_slider-color, 0.55);
+//  }
+//
+//  &:hover {
+//    .ant-slider-track {
+//      background: rgba($_slider-color, 0.65);
+//    }
+//    .ant-slider-handle:not(.ant-tooltip-open),
+//    .ant-slider-handle {
+//      border-color: rgba($_slider-color, 0.65);
+//    }
+//  }
+//
+//  .ant-slider-track {
+//    background: rgba($_slider-color, 0.35);
+//    transition: background-color 0.2s ease-in-out;
+//  }
+//
+//  .ant-slider-handle {
+//    border-color: rgba($_slider-color, 0.55);
+//
+//    &:focus {
+//      box-shadow: 0 0 0 5px rgba($_slider-color, 0.2);
+//    }
+//  }
+//}

@@ -1,0 +1,15 @@
+@import '../../../assets/sass/variables';
+
+$_icon-color: #6e40d8;
+
+.icon-wrap {
+  align-items: center;
+  display: flex;
+  border-radius: 50%;
+  justify-content: center;
+  background-color: rgba($_icon-color, 0.1);
+  color: $_icon-color;
+  font-size: 20px;
+  height: 40px;
+  width: 40px;
+}

@@ -1,0 +1,59 @@
+@import '../../../assets/sass/variables';
+
+.MenuBlock {
+  margin-bottom: $module-rem * 3;
+}
+.Menu {
+  border-bottom: 2px solid rgba($main-color, 0.08);
+  display: flex;
+  list-style-type: none;
+  margin: ($module-rem) 0;
+  padding: 0;
+  width: 100%;
+
+  .MenuItem {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: ($module-rem / 2) 0;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+
+    .link {
+      padding-right: $module-rem;
+      color: $main-color;
+      transition: color 0.2s $animation;
+    }
+    :global(.ant-tag) {
+      background: rgba($main-color, 0.15);
+      border: none;
+      color: $main-color;
+      transition: color 0.2s $animation, background 0.2s $animation;
+    }
+    &:hover {
+      border-color: $info-color;
+
+      .link {
+        color: $info-color;
+      }
+      :global(.ant-tag) {
+        background: $info-color;
+        color: $info-contrast;
+      }
+    }
+    & + .menu-item {
+      margin-left: $module-rem;
+    }
+  }
+  .active {
+    border-color: $info-color;
+
+    .link {
+      color: $info-color;
+    }
+    :global(.ant-tag) {
+      background: $info-color;
+      color: $info-contrast;
+    }
+  }
+}

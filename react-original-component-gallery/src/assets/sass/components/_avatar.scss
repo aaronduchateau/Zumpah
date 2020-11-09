@@ -1,0 +1,19 @@
+@import '../variables';
+
+$_avatar-bg: #805aff;
+
+.avatar-group {
+  width: 100%;
+
+  .ant-avatar {
+    &:not(:first-child) {
+      margin-left: -$module-rem;
+    }
+  }
+}
+
+.ant-avatar {
+  &:not(.avatar-image) {
+    background-color: $_avatar-bg;
+  }
+}

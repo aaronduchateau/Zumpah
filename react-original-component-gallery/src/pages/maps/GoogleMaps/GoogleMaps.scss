@@ -1,0 +1,11 @@
+@import '../../../assets/sass/variables';
+
+.full-height-page {
+  height: calc(100% - (#{$footer-height + $module-rem * 7} + #{$navbar-height}));
+  width: calc(100% - #{$module-rem * 4});
+  position: absolute;
+
+  @media only screen and (max-width: 768px) {
+    height: calc(100% - (#{$footer-height + $module-rem} + #{$navbar-height}));
+  }
+}
