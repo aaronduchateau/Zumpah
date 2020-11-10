@@ -6,6 +6,8 @@ import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs';
 import className from '../../utils/classNames';
 import {history} from '../../redux/store';
 import ThemeButton from '../../ui/components/ThemeButton/TheameButton';
+import { Select } from 'antd';
+const { Option } = Select;
 
 interface BaseLayoutProps {
   pageData: IPageData;
@@ -66,7 +68,18 @@ const BaseLayout: React.FunctionComponent<BaseLayoutProps> = props => {
               <h1 className='page-title'>{pageData.title}</h1>
             </div>
 
-            <div className='buy-theme'>{<ThemeButton>Buy theme</ThemeButton>}</div>
+            <div className='buy-theme'>
+            <Select
+                style={{ maxWidth: 540 }}
+                defaultValue='goal'
+                placeholder='Loading your Goals...'
+                optionFilterProp='children'>
+                <Option value='goal'>Select a different Goal:</Option>  
+                <Option value='google'>Lose 20 Pounds</Option>
+                <Option value='apple'>Recycle More</Option>
+                <Option value='microsoft'>Avoid raves because of Covid</Option>
+              </Select>
+            </div>
           </header>
         )}
 

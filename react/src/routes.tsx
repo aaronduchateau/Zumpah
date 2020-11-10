@@ -3,7 +3,7 @@ import VerticalLayout from './layouts/Vertical/Vertical';
 import NotFound from './pages/errors/NotFound/NotFound';
 import HorizontalLayout from './layouts/Horizontal/Horizontal';
 
-import PageDashboard from './pages/dashboards/Dashboard/Dashboard';
+import PageDashboard from './pages/dashboards/Dashboard/DashboardClient';
 import PageTypography from './pages/ui/Typography/Typography';
 import PageButtons from './pages/ui/Buttons/Buttons';
 import PageDropdowns from './pages/ui/Dropdowns/Dropdowns';
