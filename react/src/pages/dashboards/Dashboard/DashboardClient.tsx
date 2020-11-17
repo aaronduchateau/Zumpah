@@ -19,7 +19,11 @@ import pi2Options from './charts/pi2Options';
 import popularityChart from './charts/popularityChart';
 import succesRateChart from './charts/succesRateChart';
 
+import  { dataSteps }  from '../../../utils/mockDashboardStepData';
+
 import { IPageData, IPageProps } from '../../../interfaces/page-data';
+import { start } from 'repl';
+import SliderWithInputCustom from '../../../ui/components/SliderWithInputCustom/SliderWithInputCustom';
 
 const { Option } = Select;
 const ButtonGroup = Button.Group;
@@ -48,264 +52,6 @@ const setRelativeDemoDate = (day: number, hour: number = 0) => {
   return date;
 };
 
-const dataSteps = [
-  {
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(-12, -11),
-    end: setRelativeDemoDate(-12, -3),
-    isStepCurrent: 'false',
-    isStepStarted: 'false',
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: false,
-    isStepMarkedCompleteBySponser: false,
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  },
-  {
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(-10, -10),
-    end: setRelativeDemoDate(-10, 3),
-    isStepCurrent: false,
-    isStepStarted: false,
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: false,
-    isStepMarkedCompleteBySponser: false,
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  },{
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(-8, -8),
-    end: setRelativeDemoDate(-7, -5),
-    isStepCurrent: false,
-    isStepStarted: false,
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: false,
-    isStepMarkedCompleteBySponser: false,
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  },{
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(-6, -6),
-    end: setRelativeDemoDate(-6, -4),
-    isStepCurrent: false,
-    isStepStarted: false,
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: false,
-    isStepMarkedCompleteBySponser: false,
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  },{
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(-2, -2),
-    end: setRelativeDemoDate(-2, 7),
-    isStepCurrent: false,
-    isStepStarted: false,
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: false,
-    isStepMarkedCompleteBySponser: false,
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  },{
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(0, 2),
-    end: setRelativeDemoDate(0, 3),
-    isStepCurrent: false,
-    isStepStarted: false,
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: false,
-    isStepMarkedCompleteBySponser: false,
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  },{
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(0, 0),
-    end: setRelativeDemoDate(0, 0),
-    isStepFuture: 'false',
-    isStepCurrent: 'true',
-    isStepStarted: 'false',
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: 'false',
-    isStepMarkedCompleteBySponser: 'false',
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  },{
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(0, 2),
-    end: setRelativeDemoDate(0, 3),
-    isStepFuture: true,
-    isStepCurrent: false,
-    isStepStarted: false,
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: false,
-    isStepMarkedCompleteBySponser: false,
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  },{
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(0, 2),
-    end: setRelativeDemoDate(0, 3),
-    isStepFuture: true,
-    isStepCurrent: false,
-    isStepStarted: false,
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: false,
-    isStepMarkedCompleteBySponser: false,
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  },{
-    title: 'Attend math tutoring',
-    lastUpdatedEpoch : '1605213733',
-    lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
-    lastUpdatedSection : '',
-    EpochStartDate: '1605213733',
-    EpochEndDate: '1605973238',
-    time: '11:55',
-    date: 'Oct 5th',
-    color: '#f4e4f2',
-    start: setRelativeDemoDate(0, 2),
-    end: setRelativeDemoDate(0, 3),
-    isStepFuture: true,
-    isStepCurrent: false,
-    isStepStarted: false,
-    stepCompletionPercentage: 0,
-    isStepMarkedCompleteBySponsee: false,
-    isStepMarkedCompleteBySponser: false,
-    bounty: 15.00,
-    points: 200,
-    desc: 'Oct 5th | $15 | 20pts',
-    settlementCriterian: [],
-    content:
-      'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
-    authorAvatar: 'user1',
-    authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-  }
-];
 
 const columns = [
   {
@@ -401,9 +147,26 @@ const data = [
   }
 ];
 
+const nullFlowStep = {totalSteps: 0, name: 'NULL_STEP'};
+const modalFlowConfirmUnder100 = {totalSteps: 2, name: 'MODAL_FLOW_CONFIRM_UNDER_100'};
+
 const DashboardClient: React.FunctionComponent<IPageProps> = props => {
   const { onSetPage, getPageData } = props;
   const [recentOrders, setRecentOrders] = useState([]);
+  const [currentGoalData, setCurrentGoalData] = useState([]);
+  const [currentModalFlow, setCurrentModalFlow] = useState(nullFlowStep);
+  const [currentModalFlowStep, setCurrentModalFlowStep] = useState(0);
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+  const isEpochDateInPast = (diffDate) => {
+    const now = new Date(); 
+    var diffEpoch = (diffDate.getTime() / 1000.0);
+    var myEpoch = now.getTime()/1000.0;
+    return ( diffEpoch < myEpoch);
+  }
 
   const pageData: IPageData = {
     title: 'Maintain a G.P.A of 3.8 or Higher and make mom proud!',
@@ -423,7 +186,14 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
 
   useEffect(() => {
     getPageData('./data/table.json').then(setRecentOrders);
+    console.log(dataSteps);
+    setCurrentGoalData(dataSteps);
   }, []);
+
+  const sliderAdjustmentResponse = (uuid: uuid, value: number)=> {
+    console.log(uuid);
+    console.log(value);
+  }
 
   return (
     <>
@@ -604,13 +374,17 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
         </div>
         <div className='col-8 col-md-8'>
           <Card type='inner' title='My next 3 steps' extra={<a href='#'>More</a>}>
-            {dataSteps.map((icon) => {
-              return (
-                <Card.Grid style={gridStyle}>
-                  <div style={{ display: 'block' }}><div style={{ opacity: 0.45 }}>Oct 15th</div>  <h5 className='mt-0 mb-0'>Talk to Guidance Counselor</h5></div>
-                  <div style={{ display: 'flex' }}>
+            {currentGoalData.filter((item)=>!isEpochDateInPast(item.end)).map((item, i) => {
+               return (
+                (i < 3) && <Card.Grid style={gridStyle}>
+                  <div style={{ display: 'block' }} className={'col-11'}>
+                    <div style={{ opacity: 0.45 }}>{monthNames[item.end.getMonth()] + ' ' + item.end.getDate()}</div>  <h5 className='mt-0 mb-0'>{item.title}</h5>
+                    <div className='mt-2 mb-4' />
+                    <SliderWithInputCustom callback={sliderAdjustmentResponse} uuid={item.uuid} />
+                    </div>
+                  <div style={{ textAlign: 'right' }} className={'col-1'} >
 
-                    <div className='icon-wrap mt-1'>
+                    <div className='icon-wrap mt-0 float-right'>
                       <span key={'sli-menu'} className={'sli-menu'} style={{ fontSize: 20, color: 'rgb(247, 65, 181)' }} />
                     </div></div>
                 </Card.Grid>
@@ -652,7 +426,7 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
         </div>
         <div className='col-8 col-md-8'>
           <Card>
-            <EventsCalendarTwo />
+            <EventsCalendarTwo events={currentGoalData}/>
           </Card>
         </div>
       </div>
