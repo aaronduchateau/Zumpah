@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, CSSProperties, useRef, useState } from 'react';
 
 import uuid from 'uuid/v4';
 import ReactEcharts from 'echarts-for-react';
-import { Alert, Avatar, Button, Card, List, Progress, Select, Table, Tag } from 'antd';
+import { Alert, Avatar, Button, Card, List, Progress, Select, Table, Tag, Timeline, Icon, Badge } from 'antd';
+
 import User from '../../../layouts/components/User/User';
+import EventsCalendarTwo from '../../../pages/servicePages/EventsCalendar/EventsCalendarTwo';
 
 import activityChart from './charts/activityChart';
 import browsersOptions from './charts/browsersOptions';
@@ -17,16 +19,39 @@ import pi2Options from './charts/pi2Options';
 import popularityChart from './charts/popularityChart';
 import succesRateChart from './charts/succesRateChart';
 
+import  { dataSteps }  from '../../../utils/mockDashboardStepData';
+
 import { IPageData, IPageProps } from '../../../interfaces/page-data';
+import { start } from 'repl';
+import SliderWithInputCustom from '../../../ui/components/SliderWithInputCustom/SliderWithInputCustom';
 
 const { Option } = Select;
+const ButtonGroup = Button.Group;
 
 const user = {
-    bg: '/content/bg-card-2.jpg',
-    name: 'Anna Smith',
-    role: 'Manager',
-    img: '/content/user-76-2.jpg'
+  bg: '/content/bg-card-2.jpg',
+  name: 'Anna Smith',
+  role: 'Manager',
+  img: '/content/user-76-2.jpg'
 };
+
+const gridStyle: CSSProperties = {
+  width: '100%',
+  textAlign: 'left',
+  display: 'flex',
+  justifyContent: 'space-between',
+  cursor: 'pointer'
+};
+
+const setRelativeDemoDate = (day: number, hour: number = 0) => {
+  const date = new Date();
+
+  date.setDate(date.getDate() + day);
+  date.setHours(date.getHours() + hour);
+
+  return date;
+};
+
 
 const columns = [
   {
@@ -122,9 +147,26 @@ const data = [
   }
 ];
 
+const nullFlowStep = {totalSteps: 0, name: 'NULL_STEP'};
+const modalFlowConfirmUnder100 = {totalSteps: 2, name: 'MODAL_FLOW_CONFIRM_UNDER_100'};
+
 const DashboardClient: React.FunctionComponent<IPageProps> = props => {
   const { onSetPage, getPageData } = props;
   const [recentOrders, setRecentOrders] = useState([]);
+  const [currentGoalData, setCurrentGoalData] = useState([]);
+  const [currentModalFlow, setCurrentModalFlow] = useState(nullFlowStep);
+  const [currentModalFlowStep, setCurrentModalFlowStep] = useState(0);
+
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+  const isEpochDateInPast = (diffDate) => {
+    const now = new Date(); 
+    var diffEpoch = (diffDate.getTime() / 1000.0);
+    var myEpoch = now.getTime()/1000.0;
+    return ( diffEpoch < myEpoch);
+  }
 
   const pageData: IPageData = {
     title: 'Maintain a G.P.A of 3.8 or Higher and make mom proud!',
@@ -144,7 +186,14 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
 
   useEffect(() => {
     getPageData('./data/table.json').then(setRecentOrders);
+    console.log(dataSteps);
+    setCurrentGoalData(dataSteps);
   }, []);
+
+  const sliderAdjustmentResponse = (uuid: uuid, value: number)=> {
+    console.log(uuid);
+    console.log(value);
+  }
 
   return (
     <>
@@ -156,12 +205,13 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
         description='Your Changes have been updated again'
       />
 
-      
+
 
       <div className='row'>
         <div className='col-xl-4 col-lg-4 col-sm-12'>
           <Card>
             <div className='widget-card d-flex flex-column justify-content-center align-items-center'>
+              <h3 className='title mb-7'>Don't stop Now!</h3>
               <Progress
                 type='circle'
                 strokeColor={{
@@ -173,101 +223,101 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
               />
 
               <div className='info'>
-                <h6 className='title mb-0'>Server load</h6>
+                <h6 className='title mb-0'>Goal Completion</h6>
 
-                <div className='desc text-center'>Operations run according to general amount</div>
+                <div className='desc text-center'>Only 16% of your campaign remains</div>
               </div>
             </div>
           </Card>
         </div>
-        
 
 
-        <div className='col-xl-3 col-lg-3 col-sm-12'>
+
+        <div className='col-xl-4 col-lg-4 col-sm-12'>
           <div className='row'>
             <div className='col-12'>
-                <Card
-                    className='animated zoomIn delay-03s'
-                    style={{ backgroundColor: 'rgba(252,139,55,0.1)' }}>
-                    <div className='row align-items-center pt-2'>
-                    <div className='col col-auto'>
-                        <span
-                        className='icofont-money'
-                        style={{
-                            color:  'rgba(252,139,55,0.5)',
-                            fontSize: 48,
-                            padding: 0
-                        }}
-                        />
-                    </div>
+              <Card
+                className='animated zoomIn delay-03s'
+                style={{ backgroundColor: 'rgba(252,139,55,0.1)' }}>
+                <div className='row align-items-center pt-2'>
+                  <div className='col col-auto'>
+                    <span
+                      className='icofont-money'
+                      style={{
+                        color: 'rgba(252,139,55,0.5)',
+                        fontSize: 48,
+                        padding: 0
+                      }}
+                    />
+                  </div>
 
-                    <div className='col col-7'>
-                        <h6 className='mt-0 mb-1 nowrap'>Potential:</h6>
-                        <div className='count' style={{ fontSize: 20, color: '#fc8b37' }}>
-                        $9,154
+                  <div className='col col-7'>
+                    <h6 className='mt-0 mb-1 nowrap'>Potential Money on the table:</h6>
+                    <div className='count' style={{ fontSize: 20, color: '#fc8b37' }}>
+                      $9,154
                         </div>
-                    </div>
-                    </div>
-                </Card>
+                  </div>
+                </div>
+              </Card>
             </div>
 
             <div className='col-12'>
-                <Card
-                    className='animated zoomIn delay-04s'
-                    style={{ backgroundColor: 'rgba(247,65,181,0.1)'}}>
-                    <div className='row align-items-center pt-2'>
-                    <div className='col col-auto'>
-                        <span
-                        className='icofont-dollar-plus'
-                        style={{
-                            color: 'rgba(247,65,181,0.5)',
-                            fontSize: 48,
-                            padding: 0
-                        }}
-                        />
-                    </div>
+              <Card
+                className='animated zoomIn delay-04s'
+                style={{ backgroundColor: 'rgba(247,65,181,0.1)' }}>
+                <div className='row align-items-center pt-2'>
+                  <div className='col col-auto'>
+                    <span
+                      className='icofont-dollar-plus'
+                      style={{
+                        color: 'rgba(247,65,181,0.5)',
+                        fontSize: 48,
+                        padding: 0
+                      }}
+                    />
+                  </div>
 
-                    <div className='col col-7'>
-                        <h6 className='mt-0 mb-1 nowrap'>Current:</h6>
-                        <div className='count' style={{ fontSize: 20, color: '#f741b5'}}>
-                        $7,894
+                  <div className='col col-7'>
+                    <h6 className='mt-0 mb-1 nowrap'>Money in your Pocket:</h6>
+                    <div className='count' style={{ fontSize: 20, color: '#f741b5' }}>
+                      $7,894
                         </div>
-                    </div>
-                    </div>
-                </Card>
+                  </div>
+                </div>
+              </Card>
             </div>
 
             <div className='col-12'>
-                <Card
-                    className='animated zoomIn delay-04s'
-                    style={{ backgroundColor: 'rgba(47,167,255,0.1)' }}>
-                    <div className='row align-items-center pt-2'>
-                    <div className='col col-auto'>
-                        <span
-                        className='icofont-chart-growth'
-                        style={{
-                            color: 'rgba(47,167,255,0.5)',
-                            fontSize: 48,
-                            padding: 0
-                        }}
-                        />
-                    </div>
+              <Card
+                className='animated zoomIn delay-04s'
+                style={{ backgroundColor: 'rgba(47,167,255,0.1)' }}>
+                <div className='row align-items-center pt-2'>
+                  <div className='col col-auto'>
+                    <span
+                      className='icofont-chart-growth'
+                      style={{
+                        color: 'rgba(47,167,255,0.5)',
+                        fontSize: 48,
+                        padding: 0
+                      }}
+                    />
+                  </div>
 
-                    <div className='col col-7'>
-                        <h6 className='mt-0 mb-1 nowrap'>Points:</h6>
-                        <div className='count' style={{ fontSize: 20, color: '#2fa7ff' }}>
-                        500
+                  <div className='col col-7'>
+                    <h6 className='mt-0 mb-1 nowrap'>Zen Points:</h6>
+                    <div className='count' style={{ fontSize: 20, color: '#2fa7ff' }}>
+                      500
                         </div>
-                    </div>
-                    </div>
-                </Card>
+                  </div>
+                </div>
+              </Card>
             </div>
 
-      
+
           </div>
         </div>
 
-        <div className='col-xl-5 col-lg-5 col-sm-12'>
+        <div className='col-xl-4 col-lg-4 col-sm-12'>
           <Card title='Recent goal activity'>
             <List
               itemLayout='horizontal'
@@ -275,14 +325,11 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
               renderItem={item => (
                 <List.Item>
                   <List.Item.Meta
-                    avatar={<Avatar size={70} src={item.avatar} />}
+                    avatar={<Avatar size={40} src={item.avatar} />}
                     title={<a href='https://ant.design'>{item.title}</a>}
                     description={
                       <div className='description-block'>
                         <span className='description'>{item.desc}</span>
-                        <Tag className='m-0' style={{ color: '#fff' }} color={'#fc8b37'}>
-                          Sent
-                        </Tag>
                       </div>
                     }
                   />
@@ -296,36 +343,201 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
         </div>
 
       </div>
-      <div className='row'>
-      <div className='col-4 col-md-4'>
-        <User user={user} />
-      </div>
-      <div className='col-8 col-md-8'>
-      <Card
-        bodyStyle={{ padding: 0 }}
-        title={
-          <div className='card-header mb-4'>
-            <div className='title-box'>
-              <h5 className='title'>Recent orders</h5>
-            </div>
 
-            <div className='actions d-flex'>
-              <span className='icofont-trash' />
-              <span className='icofont-archive' />
-              <span className='icofont-navigation-menu' />
-            </div>
-          </div>
-        }>
-        {recentOrders && (
-          <Table
-            rowKey={() => uuid()}
-            pagination={false}
-            columns={columns}
-            dataSource={recentOrders}
-          />
-        )}
-      </Card>
+      <div className='row'>
+        <div className='col-4 col-md-4'>
+          <Card
+            title='My current step'
+            style={{ textAlign: 'center' }}
+            actions={
+              [<span style={{ color: 'rgb(47, 167, 255)' }}><Icon type='thunderbolt' /> 120pts</span>,
+              <span style={{ color: 'rgb(252, 139, 55)' }}><Icon type='sketch' /> $200</span>,
+              <span style={{ color: 'rgb(247, 65, 181)' }}><Icon type='carry-out' /> Oct 5</span>]
+            }>
+
+
+            <hr className='mt-4 mb-4' />
+            <h3>Buy Books, not booze!</h3>
+            <div className='mt-4 mb-4' />
+
+            Hey Kiddo, after you buy your books please take a snapshot of the reciept from the bookstore and upload for us to take a look, and then we'll check you off for the next step. We love you!
+            <div className='mt-4 mb-4' />
+            <br />
+            <div className='mt-4 mb-4' />
+            <ButtonGroup className='mb-3' >
+              <Button type='primary'>View details</Button>
+              <Button type='primary'>Yay! I'm all done!</Button>
+            </ButtonGroup>
+
+            <div className='mt-4 mb-4' />
+          </Card>
+        </div>
+        <div className='col-8 col-md-8'>
+          <Card type='inner' title='My next 3 steps' extra={<a href='#'>More</a>}>
+            {currentGoalData.filter((item)=>!isEpochDateInPast(item.end)).map((item, i) => {
+               return (
+                (i < 3) && <Card.Grid style={gridStyle}>
+                  <div style={{ display: 'block' }} className={'col-11'}>
+                    <div style={{ opacity: 0.45 }}>{monthNames[item.end.getMonth()] + ' ' + item.end.getDate()}</div>  <h5 className='mt-0 mb-0'>{item.title}</h5>
+                    <div className='mt-2 mb-4' />
+                    <SliderWithInputCustom callback={sliderAdjustmentResponse} uuid={item.uuid} />
+                    </div>
+                  <div style={{ textAlign: 'right' }} className={'col-1'} >
+
+                    <div className='icon-wrap mt-0 float-right'>
+                      <span key={'sli-menu'} className={'sli-menu'} style={{ fontSize: 20, color: 'rgb(247, 65, 181)' }} />
+                    </div></div>
+                </Card.Grid>
+              );
+            }
+            )}
+
+
+          </Card>
+
+        </div>
       </div>
+
+
+
+      <div className='row'>
+        <div className='col-4 col-md-4'>
+          <Card
+            title='My current step'
+            style={{ textAlign: 'center' }}
+            actions={[<Icon type='sketch' />, <Icon type='team' />, <Icon type='ellipsis' />]}>
+
+
+            <hr className='mt-4 mb-4' />
+            <h3>Buy Books, not booze!</h3>
+            <div className='mt-4 mb-4' />
+
+            Hey Kiddo, after you buy your books please take a snapshot of the reciept from the bookstore and upload for us to take a look, and then we'll check you off for the next step. We love you!
+            <div className='mt-4 mb-4' />
+            <br />
+            <div className='mt-4 mb-4' />
+            <ButtonGroup className='mb-3' >
+              <Button type='primary'>View details</Button>
+              <Button type='primary'>Yay! I'm all done!</Button>
+            </ButtonGroup>
+
+            <div className='mt-4 mb-4' />
+          </Card>
+        </div>
+        <div className='col-8 col-md-8'>
+          <Card>
+            <EventsCalendarTwo events={currentGoalData}/>
+          </Card>
+        </div>
+      </div>
+
+
+      <div className='row'>
+        <div className='col-4 col-md-4'>
+          <Card
+            title='My current step'
+            style={{ textAlign: 'center' }}
+            actions={[<Icon type='sketch' />, <Icon type='team' />, <Icon type='ellipsis' />]}>
+
+
+            <hr className='mt-4 mb-4' />
+            <h3>Buy Books, not booze!</h3>
+            <div className='mt-4 mb-4' />
+
+            Hey Kiddo, after you buy your books please take a snapshot of the reciept from the bookstore and upload for us to take a look, and then we'll check you off for the next step. We love you!
+            <div className='mt-4 mb-4' />
+            <br />
+            <div className='mt-4 mb-4' />
+            <ButtonGroup className='mb-3' >
+              <Button type='primary'>View details</Button>
+              <Button type='primary'>Yay! I'm all done!</Button>
+            </ButtonGroup>
+
+            <div className='mt-4 mb-4' />
+          </Card>
+        </div>
+        <div className='col-8 col-md-8'>
+          <Card title='My completed steps'>
+            <List
+              itemLayout='horizontal'
+              dataSource={dataSteps}
+              renderItem={item => (
+                <List.Item
+                  style={{ background: 'rgba(124, 219, 134, 0.35)', padding: '20px' }}
+                  actions={[
+
+                    <div className='icon-wrap'>
+                      <span key={'sli-menu'} className={'sli-menu'} style={{ fontSize: 20 }} />
+                    </div>
+                  ]}>
+                  <List.Item.Meta
+                    avatar={<Progress
+                      type="circle"
+                      strokeColor={{
+                        '0%': '#108ee9',
+                        '100%': '#87d068',
+                      }}
+                      percent={100}
+                      width={50}
+                    />}
+                    title={<a href='https://ant.design'>{item.title}</a>}
+                    description={item.desc}
+                  />
+                </List.Item>
+              )}
+            />
+          </Card>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+      <div className='row'>
+        <div className='col-4 col-md-4'>
+          <Card title='Custom timeline'>
+            <Timeline>
+              <Timeline.Item>Create a services site 2019-09-01</Timeline.Item>
+              <Timeline.Item>Solve initial network problems 2019-09-01</Timeline.Item>
+              <Timeline.Item
+                dot={<Icon type='clock-circle-o' style={{ fontSize: '16px' }} />}
+                color='red'>
+                Technical testing 2019-09-01
+          </Timeline.Item>
+              <Timeline.Item>Network problems being solved 2019-09-01</Timeline.Item>
+            </Timeline>
+          </Card>
+        </div>
+        <div className='col-8 col-md-8'>
+          <Card
+            bodyStyle={{ padding: 0 }}
+            title={
+              <div className='card-header mb-4'>
+                <div className='title-box'>
+                  <h5 className='title'>Here are the steps you've Completed!</h5>
+                </div>
+
+                <div className='actions d-flex'>
+                  <span className='icofont-trash' />
+                  <span className='icofont-archive' />
+                  <span className='icofont-navigation-menu' />
+                </div>
+              </div>
+            }>
+            {recentOrders && (
+              <Table
+                rowKey={() => uuid()}
+                pagination={false}
+                columns={columns}
+                dataSource={recentOrders}
+              />
+            )}
+          </Card>
+        </div>
       </div>
 
       <div className='row'>
