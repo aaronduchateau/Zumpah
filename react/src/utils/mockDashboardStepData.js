@@ -8,7 +8,7 @@ const setRelativeDemoDate = (day, hour) => {
   };
   
 const dataSteps = [
-    { uuid: '123e4567-e89b-12d3-a456-426655440000',
+    { uuid: '722154c2-16fd-4d66-8ff1-2240c529bc76',
       title: 'Attend math tutoring',
       lastUpdatedEpoch : '1605213733',
       lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
@@ -33,8 +33,10 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
+      percentageComplete: 100,
+      typeComplete: 1
     },
-    { uuid: '123e4567-e89b-12d3-a456-426655440000',
+    { uuid: '02763a0c-48e6-47bd-a70d-8b9d0b2de972',
       title: 'Attend science tutoring',
       lastUpdatedEpoch : '1605213733',
       lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
@@ -59,10 +61,12 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-    },{ uuid: '123e4567-e89b-12d3-a456-426655440000',
+      percentageComplete: 100,
+      typeComplete: 1
+    },{ uuid: 'dce3772c-f932-4825-880d-b1ad44cfb421',
       title: 'Talk to guidance counselor',
       lastUpdatedEpoch : '1605213733',
-      lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
+      lastUpdatedAuthor : {uuid: 'e132eece-0cdd-47b0-994b-b607ed86d71e', name: 'George Felippe', relationshipToUser: 'Sponser'},
       lastUpdatedSection : '',
       EpochStartDate: '1605213733',
       EpochEndDate: '1605973238',
@@ -84,7 +88,9 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-    },{ uuid: '123e4567-e89b-12d3-a456-426655440000',
+      percentageComplete: 80,
+      typeComplete: 1
+    },{ uuid: '39224d48-8d72-4109-bc16-5182b943ee0d',
       title: 'Check in with Grandma',
       lastUpdatedEpoch : '1605213733',
       lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
@@ -109,7 +115,9 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-    },{ uuid: '123e4567-e89b-12d3-a456-426655440000',
+      percentageComplete: 100,
+      typeComplete: 1
+    },{ uuid: '6740b28c-3492-4ddd-896a-c8dbdf050bfd',
       title: 'Buy books not booze',
       lastUpdatedEpoch : '1605213733',
       lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
@@ -134,8 +142,10 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-    },{ uuid: '123e4567-e89b-12d3-a456-426655440000',
-      title: 'Move out of daniels apartment and into your own space',
+      percentageComplete: 50,
+      typeComplete: 1
+    },{ uuid: '87480447-d71e-4b0b-bebb-d511bdf042bd',
+      title: 'Move out of daniel\'s apartment and into your own space',
       lastUpdatedEpoch : '1605213733',
       lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
       lastUpdatedSection : '',
@@ -159,7 +169,9 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-    },{ uuid: '123e4567-e89b-12d3-a456-426655440000',
+      percentageComplete: 10,
+      typeComplete: 2
+    },{ uuid: '71c225cf-863b-40f0-8a29-b52a0dfaa5c5',
       title: 'Attend math tutoring',
       lastUpdatedEpoch : '1605213733',
       lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
@@ -185,7 +197,9 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-    },{ uuid: '123e4567-e89b-12d3-a456-426655440000',
+      percentageComplete: 30,
+      typeComplete: 1
+    },{ uuid: '3e7a521e-276b-402a-8f3e-632a4a7286d6',
       title: 'Attend science tutoring',
       lastUpdatedEpoch : '1605213733',
       lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
@@ -211,7 +225,9 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
-    },{ uuid: '123e4567-e89b-12d3-a456-426655440000',
+      percentageComplete: 40,
+      typeComplete: 1
+    },{ uuid: 'd9168af0-d17e-4053-9880-89642f228d9f',
       title: 'Score a B+ or highier on math exam',
       lastUpdatedEpoch : '1605213733',
       lastUpdatedAuthor : {uuid: '123e4567-e89b-12d3-a456-426655440000', name: 'George Felippe', relationshipToUser: 'Sponser'},
@@ -237,6 +253,8 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
+      percentageComplete: 20,
+      typeComplete: 1
     },{ uuid: '123e4567-e89b-12d3-a456-426655440000',
       title: 'Score a B+ or highier on science exam',
       lastUpdatedEpoch : '1605213733',
@@ -263,6 +281,8 @@ const dataSteps = [
         'Morbi venenatis ligula non enim porttitor, ac mattis massa gravida. Aliquam ut odio et enim pretium laoreet. Vivamus ac laoreet lacus. Phasellus ac erat non libero iaculis placerat. Donec in suscipit dui, et elementum tortor.',
       authorAvatar: 'user1',
       authorUuid: '123e4567-e89b-12d3-a456-426655440000',
+      percentageComplete: 20,
+      typeComplete: 1
     }
   ];
 

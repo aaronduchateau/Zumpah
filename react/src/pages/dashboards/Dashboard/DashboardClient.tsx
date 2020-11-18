@@ -24,6 +24,8 @@ import  { dataSteps }  from '../../../utils/mockDashboardStepData';
 import { IPageData, IPageProps } from '../../../interfaces/page-data';
 import { start } from 'repl';
 import SliderWithInputCustom from '../../../ui/components/SliderWithInputCustom/SliderWithInputCustom';
+import PercentageUpdateModal from '../../../ui/components/Modal/PercentageUpdateModal';
+import { kMaxLength } from 'buffer';
 
 const { Option } = Select;
 const ButtonGroup = Button.Group;
@@ -148,17 +150,17 @@ const data = [
 ];
 
 const nullFlowStep = {totalSteps: 0, name: 'NULL_STEP'};
-const modalFlowConfirmUnder100 = {totalSteps: 2, name: 'MODAL_FLOW_CONFIRM_UNDER_100'};
+//to do refactor all these names into an enum or something
+let modalFlowConfirmUnder100 = {totalSteps: 2, name: 'TRY_MODIFY_STEP_PERCENTAGE', proposedUpdatePercentage: 100, proposedUuidUpdate: null, flowStep: 1};
 
 const DashboardClient: React.FunctionComponent<IPageProps> = props => {
   const { onSetPage, getPageData } = props;
   const [recentOrders, setRecentOrders] = useState([]);
   const [currentGoalData, setCurrentGoalData] = useState([]);
   const [currentModalFlow, setCurrentModalFlow] = useState(nullFlowStep);
-  const [currentModalFlowStep, setCurrentModalFlowStep] = useState(0);
 
-  const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
+  const monthNames = ["Jan", "Feb", "March", "April", "May", "June",
+  "July", "August", "September", "October", "Nov", "Dec"
 ];
 
   const isEpochDateInPast = (diffDate) => {
@@ -190,13 +192,24 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
     setCurrentGoalData(dataSteps);
   }, []);
 
+  const closeModalCallBack = (resetObject) => {
+    setCurrentModalFlow(resetObject);
+  }
+
   const sliderAdjustmentResponse = (uuid: uuid, value: number)=> {
+    modalFlowConfirmUnder100['proposedUpdatePercentage'] = value;
+    modalFlowConfirmUnder100['proposedUuidUpdate'] = uuid;
+    setCurrentModalFlow(modalFlowConfirmUnder100);
+
+  
     console.log(uuid);
     console.log(value);
+
   }
 
   return (
     <>
+      <PercentageUpdateModal currentModalFlow={currentModalFlow} stepData={dataSteps} nullFlowStep={nullFlowStep} closeCallback={closeModalCallBack}/>
       <Alert
         className='mb-4'
         message={null}
@@ -358,7 +371,7 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
 
             <hr className='mt-4 mb-4' />
             <h3>Buy Books, not booze!</h3>
-            <div className='mt-4 mb-4' />
+            <div className='mt-4 mb-4' style={{opacity: .45}}/>
 
             Hey Kiddo, after you buy your books please take a snapshot of the reciept from the bookstore and upload for us to take a look, and then we'll check you off for the next step. We love you!
             <div className='mt-4 mb-4' />
@@ -378,15 +391,13 @@ const DashboardClient: React.FunctionComponent<IPageProps> = props => {
                return (
                 (i < 3) && <Card.Grid style={gridStyle}>
                   <div style={{ display: 'block' }} className={'col-11'}>
-                    <div style={{ opacity: 0.45 }}>{monthNames[item.end.getMonth()] + ' ' + item.end.getDate()}</div>  <h5 className='mt-0 mb-0'>{item.title}</h5>
+                     <h5 className='mt-0 mb-0'>{item.title}</h5>
                     <div className='mt-2 mb-4' />
-                    <SliderWithInputCustom callback={sliderAdjustmentResponse} uuid={item.uuid} />
+                    <SliderWithInputCustom callback={sliderAdjustmentResponse} initValue={item.percentageComplete} uuid={item.uuid} typeComplete={item.typeComplete}/>
                     </div>
                   <div style={{ textAlign: 'right' }} className={'col-1'} >
-
-                    <div className='icon-wrap mt-0 float-right'>
-                      <span key={'sli-menu'} className={'sli-menu'} style={{ fontSize: 20, color: 'rgb(247, 65, 181)' }} />
-                    </div></div>
+                  <div style={{ opacity: 0.45 }}>{monthNames[item.end.getMonth()] + ' ' + item.end.getDate()}</div> 
+                    </div>
                 </Card.Grid>
               );
             }
